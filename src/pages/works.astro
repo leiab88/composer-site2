@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { worksList } from "../data/works";
+---
+
+<BaseLayout>
+
+  <main class="max-w-6xl mx-auto px-6 py-20">
+
+    <h1 class="text-4xl font-bold mb-4">
+      Works
+    </h1>
+
+    <p class="text-gray-500 mb-10">
+      Video Production & Creative Works
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+  {worksList.map((work) => (
+
+    <a
+      href={`https://youtu.be/${work.youtubeId}`}
+      target="_blank"
+      class="block border border-gray-200 rounded-lg overflow-hidden hover:opacity-80 hover:scale-[1.02] transition-all duration-300"
+    >
+
+     <img
+      src={`https://img.youtube.com/vi/${work.youtubeId}/hqdefault.jpg`}
+      alt={work.title}
+      loading="lazy"
+      class="w-full aspect-video object-cover"
+    />
+
+      <div class="p-3">
+
+        <div class="font-medium">
+          {work.title}
+        </div>
+
+        <div class="text-sm text-gray-500">
+          {work.category} · {work.year}
+        </div>
+
+      </div>
+
+    </a>
+
+  ))}
+
+</div>
+  </main>
+
+</BaseLayout>

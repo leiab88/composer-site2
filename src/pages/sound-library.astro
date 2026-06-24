@@ -1,0 +1,153 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { bgmList } from "../data/bgm";
+---
+
+<BaseLayout>
+
+ <main class="max-w-7xl mx-auto px-6 py-20">
+
+    <h1 class="text-4xl font-bold mb-4">
+      Sound Library
+    </h1>
+
+    <p class="text-gray-500 mb-10">
+      Free Background Music
+    </p>
+
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">
+        Terms of Use
+      </h2>
+
+      <ul class="list-disc ml-6 space-y-2 text-gray-600">
+        <li>Commercial use allowed</li>
+        <li>Use in videos allowed</li>
+        <li>Redistribution prohibited</li>
+        <li>Resale prohibited</li>
+      </ul>
+    </section>
+
+<div class="grid grid-cols-3 gap-6">
+
+  {bgmList.map((bgm) => (
+
+    <section class="border rounded-xl p-6">
+
+      <h2 class="text-2xl font-semibold">
+        {bgm.title}
+      </h2>
+
+      <p class="text-gray-500 mb-4">
+        {bgm.description}
+      </p>
+
+      <div class="aspect-video mb-4">
+        <iframe
+          class="w-full h-full rounded-lg"
+          src={`https://www.youtube.com/embed/${bgm.youtubeId}`}
+          title={bgm.title}
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <button
+        class="download-btn px-5 py-3 rounded-lg border hover:bg-gray-100 transition"
+        data-file={bgm.file}
+      >
+        Download
+      </button>
+
+    </section>
+
+  ))}
+
+</div>
+
+<dialog id="termsModal" class="modal">
+  <div class="modal-box">
+
+    <h3 class="font-bold text-lg mb-4">
+      Terms of Use
+    </h3>
+
+    <ul class="list-disc ml-5 space-y-2 text-sm">
+      <li>Commercial use allowed</li>
+      <li>Use in videos allowed</li>
+      <li>Redistribution prohibited</li>
+      <li>Resale prohibited</li>
+      <li>Copyright remains with the creator</li>
+    </ul>
+
+    <div class="mt-6">
+      <label class="flex items-center gap-2">
+        <input type="checkbox" id="agreeTerms" />
+        <span>I agree to the Terms of Use</span>
+      </label>
+    </div>
+
+    <div class="modal-action">
+
+      <button
+        onclick="document.getElementById('termsModal').close()"
+        class="btn"
+      >
+        Cancel
+      </button>
+
+      <a
+        id="downloadLink"
+        href="/audio/bgm01.wav"
+        download
+        class="btn btn-primary pointer-events-none opacity-50"
+      >
+        Download
+      </a>
+
+    </div>
+
+  </div>
+</dialog>
+
+  </main>
+
+<script>
+  const modal = document.getElementById("termsModal");
+  const checkbox = document.getElementById("agreeTerms");
+  const link = document.getElementById("downloadLink");
+
+let currentFile = "";
+                             
+document.querySelectorAll(".download-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+
+    currentFile = button.dataset.file || "";
+
+    if (link) {
+      link.href = currentFile;
+    }
+
+    modal?.showModal();
+  });
+});
+
+checkbox?.addEventListener("change", () => {
+
+  if (checkbox.checked) {
+    link?.classList.remove("pointer-events-none", "opacity-50");
+  } else {
+    link?.classList.add("pointer-events-none", "opacity-50");
+  }
+
+});
+
+  checkbox?.addEventListener("change", () => {
+    if (checkbox.checked) {
+      link?.classList.remove("pointer-events-none", "opacity-50");
+    } else {
+      link?.classList.add("pointer-events-none", "opacity-50");
+    }
+  });
+</script>
+
+</BaseLayout>
