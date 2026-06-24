@@ -1,26 +1,37 @@
 ---
-
 import BaseLayout from "../layouts/BaseLayout.astro";
+---
 
 <BaseLayout>
   <section class="max-w-2xl mx-auto mt-20 px-4">
     <h2 class="text-3xl font-bold mb-4 text-center">
-      Contact / お問い合わせ
+      Contact Test
     </h2>
 
-```
-<p class="text-center text-black/80 mb-8">
-  楽曲制作のご依頼・ご相談はこちらからお気軽にお問い合わせください。<br />
-  Feel free to contact me regarding music production and collaboration opportunities.
-</p>
+    <p class="text-center mb-8">
+      Formspree動作確認用
+    </p>
 
-<form
-  action="https://formspree.io/f/xeebqyra"
-  method="POST"
->
-  <input type="email" name="email" placeholder="Email" />
-  <button type="submit">送信テスト</button>
-</form>
+    <form
+      action="https://formspree.io/f/xeebqyra"
+      method="POST"
+      class="space-y-4"
+    >
+      <input
+        type="email"
+        name="email"
+        placeholder="メールアドレス"
+        required
+        class="w-full border p-3 rounded"
+      />
+
+      <button
+        type="submit"
+        class="px-4 py-2 border rounded"
+      >
+        送信テスト
+      </button>
+    </form>
 
   </section>
 </BaseLayout>
