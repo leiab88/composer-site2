@@ -12,25 +12,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       Formspree動作確認用
     </p>
 
-    <form
-      action="https://formspree.io/f/xeebqyra"
-      method="POST"
-      class="space-y-4"
-    >
-      <input
-        type="email"
-        name="email"
-        placeholder="メールアドレス"
-        required
-        class="w-full border p-3 rounded"
-      />
+<form action="https://formspree.io/f/xeebqyra" method="POST">
+  <input type="text" name="name" placeholder="名前" required />
 
-      <button
-        type="submit"
-        class="px-4 py-2 border rounded"
-      >
-        送信テスト
-      </button>
-    </form>
+  <input type="email" name="email" placeholder="メールアドレス" required />
+
+  <textarea name="message" placeholder="メッセージ" required></textarea>
+
+  <button type="submit">送信</button>
+</form>
   </section>
 </BaseLayout>
