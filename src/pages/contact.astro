@@ -17,48 +17,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <form
   action="https://formspree.io/f/xeebqyra"
   method="POST"
-  class="bg-white/10 backdrop-blur-md rounded-2xl p-8 space-y-4"
 >
-  <input
-    type="hidden"
-    name="_redirect"
-    value="https://composer-site2.vercel.app/thank-you"
-  />
-
-  <input
-    type="text"
-    name="name"
-    placeholder="お名前"
-    required
-    class="w-full p-3 rounded-lg text-black"
-  />
-
-  <input
-    type="email"
-    name="email"
-    placeholder="メールアドレス"
-    required
-    class="w-full p-3 rounded-lg text-black"
-  />
-
-  <textarea
-    name="message"
-    placeholder="お問い合わせ内容"
-    rows="6"
-    required
-    class="w-full p-3 rounded-lg text-black"
-  ></textarea>
-
-  <div class="text-center">
-    <button
-      type="submit"
-      class="px-8 py-3 rounded-xl bg-white text-black font-bold shadow-lg hover:scale-105 transition-all duration-300"
-    >
-      ✉ 送信
-    </button>
-  </div>
+  <input type="email" name="email" placeholder="Email" />
+  <button type="submit">送信テスト</button>
 </form>
-```
 
   </section>
 </BaseLayout>
