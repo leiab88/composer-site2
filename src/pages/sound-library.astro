@@ -5,7 +5,7 @@ import { bgmList } from "../data/bgm";
 
 <BaseLayout>
 
- <main class="max-w-7xl mx-auto px-6 py-20">
+  <main class="max-w-7xl mx-auto px-6 py-20">
 
     <h1 class="text-4xl font-bold mb-4">
       Sound Library
@@ -16,119 +16,178 @@ import { bgmList } from "../data/bgm";
     </p>
 
     <section class="mb-16">
-      <h2 class="text-2xl font-semibold mb-4">
-        Terms of Use
-      </h2>
 
-      <ul class="list-disc ml-6 space-y-2 text-gray-600">
-        <li>Commercial use allowed</li>
-        <li>Use in videos allowed</li>
-        <li>Redistribution prohibited</li>
-        <li>Resale prohibited</li>
-      </ul>
-    </section>
+  <h2 class="text-2xl font-semibold mb-4">
+    利用規約
+  </h2>
 
-<div class="grid grid-cols-3 gap-6">
+  <ul class="list-disc ml-6 space-y-2 text-gray-600">
 
-  {bgmList.map((bgm) => (
+    <li>商用利用可能</li>
+    <li>YouTube・SNS・ライブ配信・ゲーム・映像作品で利用可能</li>
 
-    <section class="border rounded-xl p-6">
+    <li class="mt-4">
+      音源データの再配布・販売は禁止
+    </li>
 
-      <h2 class="text-2xl font-semibold">
-        {bgm.title}
-      </h2>
+    <li>
+      Spotify・Apple Music等への配信は禁止
+    </li>
 
-      <p class="text-gray-500 mb-4">
-        {bgm.description}
-      </p>
+    <li>
+      Content ID等の著作権管理システムへの登録は禁止
+    </li>
 
-      <div class="aspect-video mb-4">
-        <iframe
-          class="w-full h-full rounded-lg"
-          src={`https://www.youtube.com/embed/${bgm.youtubeId}`}
-          title={bgm.title}
-          allowfullscreen
-        ></iframe>
+    <li>
+      BGMチャンネル・作業用BGM動画など音源主体コンテンツでの利用は禁止
+    </li>
+
+    <li>
+      AI学習、公序良俗に反する利用、アダルトコンテンツでの利用は禁止
+    </li>
+
+  </ul>
+
+  <a
+    href="/terms"
+    class="inline-block mt-4 underline text-sm hover:opacity-70"
+  >
+    利用規約の全文はこちら →
+  </a>
+
+</section>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+      {bgmList.map((bgm) => (
+
+        <section class="border rounded-xl p-6">
+
+          <h2 class="text-2xl font-semibold">
+            {bgm.title}
+          </h2>
+
+          <p class="text-gray-500 mb-4">
+            {bgm.description}
+          </p>
+
+          <div class="aspect-video mb-4">
+            <iframe
+              class="w-full h-full rounded-lg"
+              src={`https://www.youtube.com/embed/${bgm.youtubeId}`}
+              title={bgm.title}
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <button
+            class="download-btn px-5 py-3 rounded-lg border hover:bg-gray-100 transition"
+            data-file={bgm.file}
+          >
+            Download
+          </button>
+
+        </section>
+
+      ))}
+
+    </div>
+
+    <!-- Modal -->
+
+    <dialog id="termsModal" class="modal">
+
+      <div class="modal-box">
+
+        <h3 class="font-bold text-lg mb-4">
+          License Agreement
+        </h3>
+
+        <ul class="list-disc ml-5 space-y-2 text-sm">
+
+          <li>Commercial use allowed</li>
+          <li>YouTube monetization allowed</li>
+          <li>Game projects allowed</li>
+          <li>Redistribution prohibited</li>
+          <li>Music streaming distribution prohibited</li>
+          <li>Content ID registration prohibited</li>
+          <li>AI training prohibited</li>
+
+        </ul>
+
+        <a
+          href="/terms"
+          target="_blank"
+          class="inline-block mt-5 underline text-sm"
+        >
+          Read Full Terms of Use
+        </a>
+
+        <div class="mt-6">
+
+          <label class="flex items-center gap-2">
+
+            <input
+              type="checkbox"
+              id="agreeTerms"
+            />
+
+            <span>
+              I agree to the Terms of Use
+            </span>
+
+          </label>
+
+        </div>
+
+        <div class="modal-action">
+
+          <button
+            onclick="document.getElementById('termsModal').close()"
+            class="btn"
+          >
+            Cancel
+          </button>
+
+          <a
+            id="downloadLink"
+            href="#"
+            download
+            class="btn btn-primary pointer-events-none opacity-50"
+          >
+            Download
+          </a>
+
+        </div>
+
       </div>
 
-      <button
-        class="download-btn px-5 py-3 rounded-lg border hover:bg-gray-100 transition"
-        data-file={bgm.file}
-      >
-        Download
-      </button>
-
-    </section>
-
-  ))}
-
-</div>
-
-<dialog id="termsModal" class="modal">
-  <div class="modal-box">
-
-    <h3 class="font-bold text-lg mb-4">
-      Terms of Use
-    </h3>
-
-    <ul class="list-disc ml-5 space-y-2 text-sm">
-      <li>Commercial use allowed</li>
-      <li>Use in videos allowed</li>
-      <li>Redistribution prohibited</li>
-      <li>Resale prohibited</li>
-      <li>Copyright remains with the creator</li>
-    </ul>
-
-    <div class="mt-6">
-      <label class="flex items-center gap-2">
-        <input type="checkbox" id="agreeTerms" />
-        <span>I agree to the Terms of Use</span>
-      </label>
-    </div>
-
-    <div class="modal-action">
-
-      <button
-        onclick="document.getElementById('termsModal').close()"
-        class="btn"
-      >
-        Cancel
-      </button>
-
-      <a
-        id="downloadLink"
-        href="/audio/bgm01.wav"
-        download
-        class="btn btn-primary pointer-events-none opacity-50"
-      >
-        Download
-      </a>
-
-    </div>
-
-  </div>
-</dialog>
+    </dialog>
 
   </main>
 
-<script>
-  const modal = document.getElementById("termsModal");
-  const checkbox = document.getElementById("agreeTerms");
-  const link = document.getElementById("downloadLink");
+  <script>
 
-let currentFile = "";
-                             
+const modal = document.getElementById("termsModal");
+const checkbox = document.getElementById("agreeTerms");
+const link = document.getElementById("downloadLink");
+
 document.querySelectorAll(".download-btn").forEach((button) => {
+
   button.addEventListener("click", () => {
 
-    currentFile = button.dataset.file || "";
+    const file = button.getAttribute("data-file");
 
-    if (link) {
-      link.href = currentFile;
+    console.log(file);
+
+    if (link && file) {
+      link.href = file;
     }
 
     modal?.showModal();
+
   });
+
 });
 
 checkbox?.addEventListener("change", () => {
@@ -141,13 +200,6 @@ checkbox?.addEventListener("change", () => {
 
 });
 
-  checkbox?.addEventListener("change", () => {
-    if (checkbox.checked) {
-      link?.classList.remove("pointer-events-none", "opacity-50");
-    } else {
-      link?.classList.add("pointer-events-none", "opacity-50");
-    }
-  });
 </script>
 
 </BaseLayout>
