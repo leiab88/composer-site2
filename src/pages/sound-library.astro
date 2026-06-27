@@ -4,76 +4,50 @@ import { bgmList } from "../data/bgm";
 ---
 
 <BaseLayout>
-
   <main class="max-w-7xl mx-auto px-6 py-20">
+    <section class="mb-14">
+      <h1 class="text-5xl font-bold mb-4">Sound Library</h1>
+      <p class="text-gray-500 max-w-3xl leading-relaxed">
+        ゲーム・映像・YouTube・ライブ配信などで利用できるオリジナルBGMライブラリです。<br>
+        Sound Library にて配布される音源は、本利用規約の範囲内で無料でご利用いただけます。<br>
+        音源をダウンロードまたは利用された時点で、本規約に同意したものとみなします。<br>
+        <br>
+        利用許諾に関するお問い合わせには基本的に返信できません。必ず利用規約をお読みになった上、ご自身の判断でご利用ください。
+      </p>
+    </section>
 
-    <h1 class="text-4xl font-bold mb-4">
-      Sound Library
-    </h1>
+    <section class="mb-14 rounded-2xl border p-8 bg-white shadow-sm">
+      <h2 class="text-2xl font-semibold mb-4">利用規約</h2>
+      <ul class="list-disc ml-6 space-y-2 text-gray-600">
+        <li>商用利用可能</li>
+        <li>YouTube・SNS・ライブ配信・ゲーム・映像作品で利用可能</li>
+        <li>音源データの再配布・販売は禁止</li>
+        <li>Spotify・Apple Music等への配信は禁止</li>
+        <li>Content ID等への登録は禁止</li>
+        <li>BGM主体コンテンツでの利用は禁止</li>
+        <li>AI学習・公序良俗に反する利用は禁止</li>
+      </ul>
+      <a href="/terms" class="inline-block mt-5 underline text-sm">利用規約の全文はこちら →</a>
+    </section>
 
-    <p class="text-gray-500 mb-10">
-      Free Background Music
-    </p>
-
-    <section class="mb-16">
-
-  <h2 class="text-2xl font-semibold mb-4">
-    利用規約
-  </h2>
-
-  <ul class="list-disc ml-6 space-y-2 text-gray-600">
-
-    <li>商用利用可能</li>
-    <li>YouTube・SNS・ライブ配信・ゲーム・映像作品で利用可能</li>
-
-    <li class="mt-4">
-      音源データの再配布・販売は禁止
-    </li>
-
-    <li>
-      Spotify・Apple Music等への配信は禁止
-    </li>
-
-    <li>
-      Content ID等の著作権管理システムへの登録は禁止
-    </li>
-
-    <li>
-      BGMチャンネル・作業用BGM動画など音源主体コンテンツでの利用は禁止
-    </li>
-
-    <li>
-      AI学習、公序良俗に反する利用、アダルトコンテンツでの利用は禁止
-    </li>
-
-  </ul>
-
-  <a
-    href="/terms"
-    class="inline-block mt-4 underline text-sm hover:opacity-70"
-  >
-    利用規約の全文はこちら →
-  </a>
-
-</section>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
       {bgmList.map((bgm) => (
+        <section class="bg-white rounded-2xl border p-6 shadow-sm hover:shadow-xl transition-all duration-300">
+          <h2 class="text-2xl font-semibold mb-3">{bgm.title}</h2>
 
-        <section class="border rounded-xl p-6">
+          {bgm.tags && (
+            <div class="flex flex-wrap gap-2 mb-4">
+              {bgm.tags.map((tag) => (
+                <span class="px-3 py-1 rounded-full border bg-gray-100 text-xs">{tag}</span>
+              ))}
+            </div>
+          )}
 
-          <h2 class="text-2xl font-semibold">
-            {bgm.title}
-          </h2>
+          <p class="text-gray-500 mb-5">{bgm.description}</p>
 
-          <p class="text-gray-500 mb-4">
-            {bgm.description}
-          </p>
-
-          <div class="aspect-video mb-4">
+          <div class="aspect-video mb-5">
             <iframe
-              class="w-full h-full rounded-lg"
+              class="w-full h-full rounded-xl"
               src={`https://www.youtube.com/embed/${bgm.youtubeId}`}
               title={bgm.title}
               allowfullscreen
@@ -81,125 +55,59 @@ import { bgmList } from "../data/bgm";
           </div>
 
           <button
-            class="download-btn px-5 py-3 rounded-lg border hover:bg-gray-100 transition"
-            data-file={bgm.file}
-          >
-            Download
+            class="download-btn w-full py-3 rounded-xl bg-black text-white font-medium hover:opacity-80 transition"
+            data-file={bgm.file}>
+            ⬇ Download
           </button>
-
         </section>
-
       ))}
-
     </div>
 
-    <!-- Modal -->
-
     <dialog id="termsModal" class="modal">
-
       <div class="modal-box">
-
-        <h3 class="font-bold text-lg mb-4">
-          License Agreement
-        </h3>
-
+        <h3 class="font-bold text-lg mb-4">License Agreement</h3>
         <ul class="list-disc ml-5 space-y-2 text-sm">
-
-          <li>Commercial use allowed</li>
-          <li>YouTube monetization allowed</li>
-          <li>Game projects allowed</li>
-          <li>Redistribution prohibited</li>
-          <li>Music streaming distribution prohibited</li>
-          <li>Content ID registration prohibited</li>
-          <li>AI training prohibited</li>
-
+          <li>商用利用可能</li>
+          <li>音源データの再配布・販売は禁止</li>
+          <li>Spotify・Apple Music等への配信は禁止</li>
+          <li>Content ID等への登録は禁止</li>
+          <li>BGM主体コンテンツでの利用は禁止</li>
+          <li>AI学習・公序良俗に反する利用は禁止</li>
         </ul>
 
-        <a
-          href="/terms"
-          target="_blank"
-          class="inline-block mt-5 underline text-sm"
-        >
-          Read Full Terms of Use
-        </a>
+        <a href="/terms" target="_blank" class="inline-block mt-5 underline text-sm">Read Full Terms of Use</a>
 
         <div class="mt-6">
-
           <label class="flex items-center gap-2">
-
-            <input
-              type="checkbox"
-              id="agreeTerms"
-            />
-
-            <span>
-              I agree to the Terms of Use
-            </span>
-
+            <input type="checkbox" id="agreeTerms" />
+            <span>I agree to the Terms of Use</span>
           </label>
-
         </div>
 
         <div class="modal-action">
-
-          <button
-            onclick="document.getElementById('termsModal').close()"
-            class="btn"
-          >
-            Cancel
-          </button>
-
-          <a
-            id="downloadLink"
-            href="#"
-            download
-            class="btn btn-primary pointer-events-none opacity-50"
-          >
-            Download
-          </a>
-
+          <button onclick="document.getElementById('termsModal').close()" class="btn">Cancel</button>
+          <a id="downloadLink" href="#" download class="btn btn-primary pointer-events-none opacity-50">Download</a>
         </div>
-
       </div>
-
     </dialog>
-
   </main>
 
-  <script>
-
-const modal = document.getElementById("termsModal");
-const checkbox = document.getElementById("agreeTerms");
-const link = document.getElementById("downloadLink");
-
-document.querySelectorAll(".download-btn").forEach((button) => {
-
-  button.addEventListener("click", () => {
-
-    const file = button.getAttribute("data-file");
-
-    console.log(file);
-
-    if (link && file) {
-      link.href = file;
-    }
-
-    modal?.showModal();
-
-  });
-
+<script>
+const modal=document.getElementById("termsModal");
+const checkbox=document.getElementById("agreeTerms");
+const link=document.getElementById("downloadLink");
+document.querySelectorAll(".download-btn").forEach((button)=>{
+ button.addEventListener("click",()=>{
+   const file=button.getAttribute("data-file");
+   if(link&&file) link.href=file;
+   checkbox.checked=false;
+   link.classList.add("pointer-events-none","opacity-50");
+   modal?.showModal();
+ });
 });
-
-checkbox?.addEventListener("change", () => {
-
-  if (checkbox.checked) {
-    link?.classList.remove("pointer-events-none", "opacity-50");
-  } else {
-    link?.classList.add("pointer-events-none", "opacity-50");
-  }
-
+checkbox?.addEventListener("change",()=>{
+ if(checkbox.checked){link?.classList.remove("pointer-events-none","opacity-50");}
+ else{link?.classList.add("pointer-events-none","opacity-50");}
 });
-
 </script>
-
 </BaseLayout>
