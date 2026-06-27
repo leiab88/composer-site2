@@ -4,87 +4,73 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout>
 
-  <main class="max-w-3xl mx-auto px-6 py-20">
+  <main class="max-w-2xl mx-auto px-6 py-20">
 
-    <h1 class="text-5xl font-bold mb-4">
+    <h1 class="text-5xl font-bold mb-4 text-center">
       Contact
     </h1>
 
-    <p class="text-gray-500 mb-12">
-      音楽制作のご依頼、ご質問、ご相談などお気軽にお問い合わせください。
+    <p class="text-center text-lg leading-relaxed mb-10">
+      楽曲制作のご依頼・ご相談など、お気軽にお問い合わせください。<br />
+      内容を確認のうえ、通常2〜3営業日以内にご返信いたします。
     </p>
 
     <form
-      action="https://formspree.io/f/xeebqyra"
+      action="https://ssgform.com/s/0GgQJY90XFte"
       method="POST"
-      class="space-y-6"
+      class="space-y-6 bg-white/10 backdrop-blur-md rounded-2xl p-8"
     >
 
+      <!-- お名前 -->
       <div>
-
         <label class="block mb-2 font-medium">
-          Name
+          お名前
         </label>
 
         <input
           type="text"
           name="name"
           required
-          class="w-full border rounded-lg px-4 py-3"
+          class="w-full p-3 rounded-lg border text-black"
         />
-
       </div>
 
+      <!-- メールアドレス -->
       <div>
-
         <label class="block mb-2 font-medium">
-          Email
+          メールアドレス
         </label>
 
         <input
           type="email"
           name="email"
           required
-          class="w-full border rounded-lg px-4 py-3"
+          class="w-full p-3 rounded-lg border text-black"
         />
-
       </div>
 
+      <!-- お問い合わせ内容 -->
       <div>
-
         <label class="block mb-2 font-medium">
-          Subject
-        </label>
-
-        <input
-          type="text"
-          name="subject"
-          class="w-full border rounded-lg px-4 py-3"
-        />
-
-      </div>
-
-      <div>
-
-        <label class="block mb-2 font-medium">
-          Message
+          お問い合わせ内容
         </label>
 
         <textarea
           name="message"
-          rows="8"
+          rows="7"
           required
-          class="w-full border rounded-lg px-4 py-3"
+          class="w-full p-3 rounded-lg border text-black"
         ></textarea>
-
       </div>
 
-      <button
-        type="submit"
-        class="px-6 py-3 border rounded-lg hover:bg-base-200 transition"
-      >
-        Send Message
-      </button>
+      <div class="text-center pt-4">
+        <button
+          type="submit"
+          class="px-8 py-3 rounded-xl bg-white text-black font-bold shadow-lg hover:scale-105 transition-all duration-300"
+        >
+          ✉ 送信する
+        </button>
+      </div>
 
     </form>
 
