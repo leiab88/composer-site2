@@ -41,7 +41,7 @@ const { track } = Astro.props;
       {track.description}
     </p>
 
-    <!-- Audio -->
+    <!-- Audio Player -->
     <div class="mb-10">
       <audio controls class="w-full">
         <source src={track.file} type="audio/wav" />
@@ -50,6 +50,7 @@ const { track } = Astro.props;
 
     <!-- Download -->
     <div class="mb-10">
+
       <a
         href={track.file}
         download
@@ -58,9 +59,33 @@ const { track } = Astro.props;
         ⬇ Download Free BGM
       </a>
 
-      <p class="text-xs text-gray-400 mt-2 text-center">
+      <p class="text-sm text-gray-600 mt-4 text-center font-medium">
         商用利用可能・クレジット不要（※利用規約をご確認ください）
       </p>
+
+      <div class="text-center mt-3">
+        <a
+          href="/terms"
+          class="underline text-sm hover:text-black transition"
+        >
+          ▶ 利用規約はこちら
+        </a>
+      </div>
+
+      <div class="mt-8 p-6 bg-gray-50 border rounded-xl text-sm leading-7 text-gray-600">
+
+        <p class="mb-4">
+          Sound Library にて配布される音源は、本利用規約の範囲内で無料でご利用いただけます。<br />
+          音源をダウンロードまたは利用された時点で、本規約に同意したものとみなします。
+        </p>
+
+        <p>
+          利用許諾に関するお問い合わせには基本的に返信できません。<br />
+          必ず利用規約をお読みになった上、ご自身の判断でご利用ください。
+        </p>
+
+      </div>
+
     </div>
 
     <!-- Tags -->
