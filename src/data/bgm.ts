@@ -1,9 +1,11 @@
 export const bgmList = [
   {
+    id: "morning-light",
+
     title: "Morning Light",
 
     description:
-      "穏やかな朝をイメージした、やさしく包み込むようなピアノアンビエント。",
+      "穏やかな朝をイメージしたアンビエント。",
 
     youtubeId: "xemgznIOIIQ",
 
@@ -34,6 +36,8 @@ export const bgmList = [
   },
 
   {
+    id: "night-sky",
+
     title: "Night Sky",
 
     description:
@@ -68,6 +72,8 @@ export const bgmList = [
   },
 
   {
+    id: "cinematic-world",
+
     title: "Cinematic World",
 
     description:

@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { bgmList } from "../../data/bgm";
+
+export async function getStaticPaths() {
+  return bgmList.map((track) => ({
+    params: { id: track.id },
+    props: { track },
+  }));
+}
+
+const { track } = Astro.props;
+---
+
+<BaseLayout title={track.title}>
+
+  <main class="max-w-4xl mx-auto px-6 py-20">
+
+    <!-- Title -->
+    <h1 class="text-4xl font-bold mb-2">
+      {track.title}
+    </h1>
+
+    <!-- Meta -->
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="text-sm px-3 py-1 border rounded-full">
+        {track.genre}
+      </span>
+
+      <span class="text-sm px-3 py-1 border rounded-full">
+        {track.mood}
+      </span>
+
+      <span class="text-sm px-3 py-1 border rounded-full">
+        {track.instrument}
+      </span>
+    </div>
+
+    <!-- Description -->
+    <p class="text-gray-600 mb-8 leading-relaxed">
+      {track.description}
+    </p>
+
+    <!-- Audio -->
+    <div class="mb-10">
+      <audio controls class="w-full">
+        <source src={track.file} type="audio/wav" />
+      </audio>
+    </div>
+
+    <!-- Download -->
+    <div class="mb-10">
+      <a
+        href={track.file}
+        download
+        class="block text-center bg-black text-white py-4 rounded-xl font-medium hover:opacity-80 transition"
+      >
+        ⬇ Download Free BGM
+      </a>
+
+      <p class="text-xs text-gray-400 mt-2 text-center">
+        商用利用可能・クレジット不要（※利用規約をご確認ください）
+      </p>
+    </div>
+
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-2 mb-10">
+      {track.tags.map((tag) => (
+        <span class="text-xs px-3 py-1 bg-gray-100 border rounded-full">
+          #{tag}
+        </span>
+      ))}
+    </div>
+
+    <!-- YouTube -->
+    <div class="aspect-video mb-10">
+      <iframe
+        class="w-full h-full rounded-xl"
+        src={`https://www.youtube.com/embed/${track.youtubeId}`}
+        title={track.title}
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- Back -->
+    <a
+      href="/sound-library"
+      class="text-sm underline text-gray-500 hover:text-black transition"
+    >
+      ← Back to Library
+    </a>
+
+  </main>
+
+</BaseLayout>

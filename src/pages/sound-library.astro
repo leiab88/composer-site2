@@ -5,8 +5,11 @@ import { bgmList } from "../data/bgm";
 
 <BaseLayout>
   <main class="max-w-7xl mx-auto px-6 py-20">
+
+    <!-- Header -->
     <section class="mb-14">
       <h1 class="text-5xl font-bold mb-4">Sound Library</h1>
+
       <p class="text-gray-500 max-w-3xl leading-relaxed">
         ゲーム・映像・YouTube・ライブ配信などで利用できるオリジナルBGMライブラリです。<br>
         Sound Library にて配布される音源は、本利用規約の範囲内で無料でご利用いただけます。<br>
@@ -16,8 +19,10 @@ import { bgmList } from "../data/bgm";
       </p>
     </section>
 
+    <!-- Terms -->
     <section class="mb-14 rounded-2xl border p-8 bg-white shadow-sm">
       <h2 class="text-2xl font-semibold mb-4">利用規約</h2>
+
       <ul class="list-disc ml-6 space-y-2 text-gray-600">
         <li>商用利用可能</li>
         <li>YouTube・SNS・ライブ配信・ゲーム・映像作品で利用可能</li>
@@ -27,45 +32,72 @@ import { bgmList } from "../data/bgm";
         <li>BGM主体コンテンツでの利用は禁止</li>
         <li>AI学習・公序良俗に反する利用は禁止</li>
       </ul>
-      <a href="/terms" class="inline-block mt-5 underline text-sm">利用規約の全文はこちら →</a>
+
+      <a href="/terms" class="inline-block mt-5 underline text-sm">
+        利用規約の全文はこちら →
+      </a>
     </section>
 
+    <!-- Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-      {bgmList.map((bgm) => (
-        <section class="bg-white rounded-2xl border p-6 shadow-sm hover:shadow-xl transition-all duration-300">
-          <h2 class="text-2xl font-semibold mb-3">{bgm.title}</h2>
 
+      {bgmList.map((bgm) => (
+        <a
+          href={`/sound/${bgm.id}`}
+          class="group bg-white rounded-2xl border p-6 shadow-sm hover:shadow-xl transition-all duration-300 block"
+        >
+
+          <!-- Title -->
+          <h2 class="text-2xl font-semibold mb-3 group-hover:underline">
+            {bgm.title}
+          </h2>
+
+          <!-- Tags -->
           {bgm.tags && (
             <div class="flex flex-wrap gap-2 mb-4">
               {bgm.tags.map((tag) => (
-                <span class="px-3 py-1 rounded-full border bg-gray-100 text-xs">{tag}</span>
+                <span class="px-3 py-1 rounded-full border bg-gray-100 text-xs">
+                  {tag}
+                </span>
               ))}
             </div>
           )}
 
-          <p class="text-gray-500 mb-5">{bgm.description}</p>
+          <!-- Description -->
+          <p class="text-gray-500 mb-5">
+            {bgm.description}
+          </p>
 
+          <!-- YouTube Preview -->
           <div class="aspect-video mb-5">
             <iframe
               class="w-full h-full rounded-xl"
               src={`https://www.youtube.com/embed/${bgm.youtubeId}`}
               title={bgm.title}
               allowfullscreen
-            ></iframe>
+            />
           </div>
 
+          <!-- Download Button（リンク化しない） -->
           <button
             class="download-btn w-full py-3 rounded-xl bg-black text-white font-medium hover:opacity-80 transition"
-            data-file={bgm.file}>
+            data-file={bgm.file}
+            type="button"
+          >
             ⬇ Download
           </button>
-        </section>
+
+        </a>
       ))}
+
     </div>
 
+    <!-- Modal -->
     <dialog id="termsModal" class="modal">
       <div class="modal-box">
+
         <h3 class="font-bold text-lg mb-4">License Agreement</h3>
+
         <ul class="list-disc ml-5 space-y-2 text-sm">
           <li>商用利用可能</li>
           <li>音源データの再配布・販売は禁止</li>
@@ -75,7 +107,9 @@ import { bgmList } from "../data/bgm";
           <li>AI学習・公序良俗に反する利用は禁止</li>
         </ul>
 
-        <a href="/terms" target="_blank" class="inline-block mt-5 underline text-sm">Read Full Terms of Use</a>
+        <a href="/terms" target="_blank" class="inline-block mt-5 underline text-sm">
+          Read Full Terms of Use
+        </a>
 
         <div class="mt-6">
           <label class="flex items-center gap-2">
@@ -85,29 +119,48 @@ import { bgmList } from "../data/bgm";
         </div>
 
         <div class="modal-action">
-          <button onclick="document.getElementById('termsModal').close()" class="btn">Cancel</button>
-          <a id="downloadLink" href="#" download class="btn btn-primary pointer-events-none opacity-50">Download</a>
+          <button onclick="document.getElementById('termsModal').close()" class="btn">
+            Cancel
+          </button>
+
+          <a id="downloadLink" href="#" download class="btn btn-primary pointer-events-none opacity-50">
+            Download
+          </a>
         </div>
+
       </div>
     </dialog>
+
   </main>
 
-<script>
-const modal=document.getElementById("termsModal");
-const checkbox=document.getElementById("agreeTerms");
-const link=document.getElementById("downloadLink");
-document.querySelectorAll(".download-btn").forEach((button)=>{
- button.addEventListener("click",()=>{
-   const file=button.getAttribute("data-file");
-   if(link&&file) link.href=file;
-   checkbox.checked=false;
-   link.classList.add("pointer-events-none","opacity-50");
-   modal?.showModal();
- });
-});
-checkbox?.addEventListener("change",()=>{
- if(checkbox.checked){link?.classList.remove("pointer-events-none","opacity-50");}
- else{link?.classList.add("pointer-events-none","opacity-50");}
-});
-</script>
+  <!-- Script -->
+  <script>
+    const modal = document.getElementById("termsModal");
+    const checkbox = document.getElementById("agreeTerms");
+    const link = document.getElementById("downloadLink");
+
+    document.querySelectorAll(".download-btn").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const file = button.getAttribute("data-file");
+        if (link && file) link.href = file;
+
+        checkbox.checked = false;
+        link.classList.add("pointer-events-none", "opacity-50");
+
+        modal?.showModal();
+      });
+    });
+
+    checkbox?.addEventListener("change", () => {
+      if (checkbox.checked) {
+        link?.classList.remove("pointer-events-none", "opacity-50");
+      } else {
+        link?.classList.add("pointer-events-none", "opacity-50");
+      }
+    });
+  </script>
+
 </BaseLayout>
