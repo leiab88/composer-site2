@@ -1,23 +1,23 @@
 export const worksList = [
   {
-    title: "Project 01",
-    category: "Video Production",
-    year: "2025",
-    youtubeId: "xemgznIOIIQ",
+    title: "Badge Access",
+    category: "Free BGM",
+    year: "2026",
+    youtubeId: "f9-Y0WTUMA8",
   },
 
   {
-    title: "Project 02",
-    category: "Video Production",
-    year: "2025",
-    youtubeId: "DZXeDsRFS14",
+    title: "After Hour",
+    category: "Free BGM",
+    year: "2026",
+    youtubeId: "Ql-fCldqElQ",
   },
 
   {
-    title: "Project 03",
-    category: "Video Production",
-    year: "2024",
-    youtubeId: "DYqnsnioDVQ",
+    title: "Unsent",
+    category: "Free BGM",
+    year: "2026",
+    youtubeId: "cQGi7EelgQc",
   },
 
 
