@@ -1,21 +1,21 @@
 export const bgmList = [
   {
-    id: "morning-light",
+    id: "badge-access",
 
-    title: "Morning Light",
+    title: "Badge Access",
 
     description:
-      "穏やかな朝をイメージしたアンビエント。",
+      "誰もいないはずのビルにうっすらと感じる誰かの気配",
 
-    youtubeId: "xemgznIOIIQ",
+    youtubeId: "f9-Y0WTUMA8",
 
-    file: "/audio/bgm01.wav",
+    file: "/audio/Midnight Office_01.Badge Access.mp3",
 
-    genre: "Ambient",
+    style: "Ambient",
 
-    mood: "Relaxing",
+    mood: "Night",
 
-    instrument: "Piano",
+    instrument: "Synth",
 
     usage: [
       "Game",
@@ -27,27 +27,27 @@ export const bgmList = [
 
     tags: [
       "Ambient",
-      "Relaxing",
-      "Piano",
-      "Morning",
+      "Night",
+      "Synth",
+      "Dark",
       "Game",
       "Free",
     ],
   },
 
   {
-    id: "night-sky",
+    id: "after-hour",
 
-    title: "Night Sky",
+    title: "After Hour",
 
     description:
-      "静かな夜空をイメージしたシネマティックアンビエント。",
+      "深夜のオフィスフロアにただよう不穏な雰囲気。",
 
-    youtubeId: "DZXeDsRFS14",
+    youtubeId: "Ql-fCldqElQ",
 
-    file: "/audio/bgm02.wav",
+    file: "/audio/Midnight Office_02.After Hour.mp3",
 
-    genre: "Ambient",
+    style: "Ambient",
 
     mood: "Dark",
 
@@ -64,7 +64,7 @@ export const bgmList = [
     tags: [
       "Ambient",
       "Dark",
-      "Night",
+      "Suspense",
       "Synth",
       "Film",
       "Free",
@@ -72,36 +72,36 @@ export const bgmList = [
   },
 
   {
-    id: "cinematic-world",
+    id: "unsent",
 
-    title: "Cinematic World",
+    title: "Unsent",
 
     description:
-      "壮大な世界観を演出するシネマティックBGM。",
+      "送信されなかった社外秘のメッセージ。",
 
-    youtubeId: "DYqnsnioDVQ",
+    youtubeId: "cQGi7EelgQc",
 
-    file: "/audio/bgm03.wav",
+    file: "/audio/Midnight Office_03.Unsent.mp3",
 
-    genre: "Cinematic",
+    style: "Minimal",
 
-    mood: "Epic",
+    mood: "Urban",
 
-    instrument: "Orchestral",
+    instrument: "Piano",
 
     usage: [
       "Game",
-      "Film",
+      "Documentary",
       "Trailer",
     ],
 
     license: "Free",
 
     tags: [
-      "Cinematic",
-      "Epic",
-      "Fantasy",
-      "Orchestral",
+      "Minimal",
+      "Urban",
+      "Piano",
+      "Documentary",
       "Game",
       "Free",
     ],
