@@ -26,6 +26,22 @@ const { title, description, image = '/social_img.webp', ogType = 'website' } = A
 
 <meta name="google-site-verification" content="l3xDhiJnlm6Asv1WH0J2ln0s9Ea2fOJwgBcNAt0NGA0" />
 
+<!-- Google Analytics -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-P5C57X50JV"
+></script>
+
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-P5C57X50JV");
+</script>
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={ogType} />
 <meta property="og:url" content={Astro.url} />
