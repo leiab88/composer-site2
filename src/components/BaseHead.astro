@@ -17,6 +17,8 @@ const {
   ogType = "website",
 } = Astro.props;
 
+console.log("Astro.url =", Astro.url.href);
+
 const siteName = "BELUNE WORKS";
 const pageTitle =
   title === siteName ? siteName : `${title} | ${siteName}`;
